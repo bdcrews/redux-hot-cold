@@ -10,6 +10,7 @@ export class GuessForm extends React.Component {
         event.preventDefault();
         const value = this.input.value;
         this.props.dispatch(makeGuess(value));
+        this.input.value = '';
     }
 
     render() {
@@ -27,7 +28,9 @@ export class GuessForm extends React.Component {
 
 const mapStateToProps = state => ({
     guessCount: state.guesses.length,
+    fewestGuesses: state.fewestGuesses,
     correctAnswer: state.correctAnswer
 });
 
 export default connect(mapStateToProps)(GuessForm);
+
